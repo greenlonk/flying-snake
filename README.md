@@ -16,11 +16,14 @@ This project is written in Rust and leverages the Actix-web framework for API de
     cd <repository-directory>
     ```
 
-2. Create a `.env` file in the root directory and add your OpenWeatherMap API key and city:
+2. Create a `.env` file in the root directory and add your OpenWeatherMap API key, city, zipcode, and country code:
     ```env
     OPENWEATHER_API_KEY=your_api_key
     OPENWEATHER_CITY=your_city
+    OPENWEATHER_ZIPCODE=your_zipcode
+    OPENWEATHER_COUNTRYCODE=your_countrycode
     ```
+   Zipcode and country code are optional, but if used, both must be present.
 
 3. Build the project:
     ```sh
