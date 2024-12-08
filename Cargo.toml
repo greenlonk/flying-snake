@@ -1,0 +1,10 @@
+[package]
+name = "flying-snake"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4"         # For building the REST API
+serde = { version = "1.0", features = ["derive"] } # For JSON serialization/deserialization
+reqwest = { version = "0.12.9", features = ["json"] }        # For HTTP requests to fetch weather data
+tokio = { version = "1", features = ["full"] }    # For async runtime
