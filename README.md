@@ -16,7 +16,7 @@ This project is written in Rust and leverages the Actix-web framework for API de
       "expires_in": "<utc_timestamp>",
       "refresh_token": "your_refresh_token"
   }
-```
+  ```
 
 ## Setup
 
