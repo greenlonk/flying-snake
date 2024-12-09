@@ -1,14 +1,15 @@
 use actix_web::{App, HttpServer};
-
-mod api;
+use dotenv::dotenv;
+mod handlers;
 mod services;
-mod config;
+mod utils;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
     HttpServer::new(|| {
         App::new()
-            .configure(api::init_routes)
+            .configure(handlers::init_routes)
     })
         .bind("127.0.0.1:8080")?
         .run()

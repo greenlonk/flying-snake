@@ -1,6 +1,6 @@
 use reqwest::Error;
 use serde::{Deserialize, Serialize};
-use crate::config::settings::{get_api_key, get_city, get_countrycode, get_zipcode};
+use crate::utils::config::{get_api_key, get_city, get_countrycode, get_zipcode};
 
 #[derive(serde::Serialize, Deserialize)]
 pub struct WeatherResponse {
@@ -29,7 +29,7 @@ struct Main {
 
 pub async fn fetch_weather() -> Result<WeatherResponse, Error> {
     let api_key = get_api_key();
-    let location = fetch_location().await.unwrap();
+    let location = fetch_location().await?;
     let lat = location.lat;
     let lon = location.lon;
     let url = format!(
@@ -53,7 +53,7 @@ async fn fetch_location() -> Result<LocationResponse, Error> {
 async fn fetch_location_by_zipcode_and_countrycode() -> Result<LocationResponse, Error> {
     let api_key = get_api_key();
     let zipcode = get_zipcode().unwrap();
-    let countrycode = get_countrycode().unwrap();
+    let countrycode = get_countrycode().expect("Countrycode missing!");
 
     let zipcode_countrycode = format!("{},{}", zipcode, countrycode);
     let url = format!(
